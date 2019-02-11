@@ -205,9 +205,9 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.9 \
     vendor.display.config@1.9_vendor
 
-# Doze mode
+# Device-specific settings
 PRODUCT_PACKAGES += \
-    XiaomiDoze
+    XiaomiParts
 
 # DRM
 PRODUCT_PACKAGES += \
