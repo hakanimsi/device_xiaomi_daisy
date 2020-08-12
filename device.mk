@@ -39,7 +39,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2280
+TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
 # Permissions
@@ -81,7 +81,7 @@ PRODUCT_COPY_FILES += \
 # ANT
 PRODUCT_PACKAGES += \
     AntHalService \
-    com.dsi.ant.antradio_library \
+    antradio_app \
     libantradio
 
 # Audio
@@ -153,8 +153,10 @@ BOOT_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libbt-vendor
-
+    libbluetooth_qti \
+    libbt-logClient.so \
+    libbtconfigstore \
+    
 # Camera
 PRODUCT_PACKAGES += \
     android.frameworks.cameraservice.common@2.0 \
@@ -199,7 +201,9 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libqdMetaData.system \
     libgenlock \
-    libtinyxml
+    libtinyxml \
+    vendor.display.config@1.9 \
+    vendor.display.config@1.9_vendor
 
 # Doze mode
 PRODUCT_PACKAGES += \
@@ -403,6 +407,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
+# QTI Common
+TARGET_COMMON_QTI_COMPONENTS := \
+    perf
+
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
@@ -422,10 +430,6 @@ VENDOR_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 # VNDK
 PRODUCT_PACKAGES += \
     vndk-sp
-
-# Verity
-PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/7824900.sdhci/by-name/system
-$(call inherit-product, build/target/product/verity.mk)
 
 # Vibrator
 PRODUCT_PACKAGES += \
